@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Niña Preciosa</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111111;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        #animacion-cumpleanos {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .emoji-flotante {
+            position: absolute;
+            bottom: -100px;
+            font-size: 2rem;
+            animation: flotar linear infinite;
+            opacity: 0;
+        }
+
+        .e1 { left: 10%; animation-duration: 8s; animation-delay: 0s; font-size: 2.5rem; }
+        .e2 { left: 25%; animation-duration: 12s; animation-delay: 2s; font-size: 1.8rem; }
+        .e3 { left: 45%; animation-duration: 10s; animation-delay: 4s; font-size: 3rem; }
+        .e4 { left: 65%; animation-duration: 9s; animation-delay: 1s; font-size: 2.2rem; }
+        .e5 { left: 85%; animation-duration: 11s; animation-delay: 3s; font-size: 2.6rem; }
+        .e6 { left: 15%; animation-duration: 13s; animation-delay: 5s; font-size: 2rem; }
+        .e7 { left: 75%; animation-duration: 14s; animation-delay: 6s; font-size: 2.8rem; }
+
+        @keyframes flotar {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        #pantalla-inicio {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .btn-abrir {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #d4a373;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+            margin-top: 20px;
+        }
+
+        .btn-abrir:active {
+            transform: scale(0.95);
+        }
+
+        #contenedor-carta {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .carta-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="animacion-cumpleanos">
+        <div class="emoji-flotante e1">🎂</div>
+        <div class="emoji-flotante e2">🎈</div>
+        <div class="emoji-flotante e3">🎁</div>
+        <div class="emoji-flotante e4">🎉</div>
+        <div class="emoji-flotante e5">🎊</div>
+        <div class="emoji-flotante e6">🥳</div>
+        <div class="emoji-flotante e7">🪅</div>
+    </div>
+
+    <div id="pantalla-inicio">
+        <h2>Tu sorpresa de cumpleaños...</h2>
+        <button class="btn-abrir" onclick="abrirSorpresa()">Abrir Carta</button>
+    </div>
+
+    <div id="contenedor-carta">
+        <!-- Nombres ajustados para coincidir con tu captura de pantalla -->
+        <img src="carta.jpg.jpg" alt="Carta de Cumpleaños" class="carta-img">
+    </div>
+
+    <!-- Nombres ajustados para coincidir con tu captura de pantalla -->
+    <audio id="musica-fondo" src="cancion.mp3.mp3" loop></audio>
+
+    <script>
+        function abrirSorpresa() {
+            var musica = document.getElementById('musica-fondo');
+            musica.play().catch(function(error) {
+                console.log("Audio bloqueado inicialmente:", error);
+            });
+            
+            document.getElementById('pantalla-inicio').style.display = 'none';
+            document.getElementById('animacion-cumpleanos').style.display = 'none';
+            document.getElementById('contenedor-carta').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
